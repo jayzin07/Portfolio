@@ -146,14 +146,16 @@
 
   /* KPI strip — signature element */
   .kpi-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
     background:var(--line); border:1px solid var(--line); border-radius:var(--radius-tile);
     overflow:hidden;
   }
   .kpi-tile{
     background:var(--panel); padding:20px 18px 16px; min-height:118px;
     display:flex; flex-direction:column; justify-content:space-between;
+    grid-column:span 2;
   }
+  .kpi-tile:nth-child(4), .kpi-tile:nth-child(5){grid-column:span 3;}
   .kpi-num{font-family:var(--font-display); font-weight:700; font-size:26px;}
   .kpi-label{font-size:12.5px; color:var(--muted); margin-top:4px; line-height:1.3;}
   .kpi-spark{width:100%; height:26px; margin-top:10px;}
@@ -239,11 +241,17 @@
     color:var(--muted); font-family:var(--font-mono); font-size:11.5px; text-align:center; padding:10px;
   }
   .proj-visual svg{width:34px; height:34px; opacity:.55;}
+  .proj-visual img{width:100%; height:100%; object-fit:cover; object-position:top;}
   .proj-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .proj-title{font-family:var(--font-display); font-weight:600; font-size:15.5px;}
   .proj-desc{font-size:13.5px; color:var(--ink); flex:1;}
   .proj-tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:auto;}
   .proj-tags .pill{font-size:10.5px; padding:3px 8px;}
+  .proj-link{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--signal);
+    text-decoration:none; display:inline-flex; align-items:center; gap:4px;
+  }
+  .proj-link:hover{text-decoration:underline;}
   @media (max-width:800px){ .proj-grid{grid-template-columns:1fr;} }
 
   /* -------- Certifications -------- */
@@ -284,9 +292,11 @@
   @media (max-width:900px){
     .about-body{grid-template-columns:1fr;}
     .skill-groups{grid-template-columns:repeat(2,1fr);}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .kpi-tile, .kpi-tile:nth-child(4), .kpi-tile:nth-child(5){grid-column:span 1;}
   }
   @media (max-width:640px){
-    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .kpi-grid{grid-template-columns:1fr;}
     .skill-groups{grid-template-columns:1fr;}
     .toolbar-right .btn-primary span.btn-label{display:none;}
     nav.tabs a{padding:8px 9px;}
@@ -354,8 +364,8 @@
       <span class="lang-en" hidden>Data Analyst &amp; BI — Marketing Analytics</span>
     </p>
     <p class="pitch">
-      <span class="lang-pt">Transformo dados transacionais em decisões de marketing e negócio. SQL Server, Python e Power BI para uma rede de 400+ lojas — do dado bruto ao dashboard que a diretoria realmente usa.</span>
-      <span class="lang-en" hidden>I turn transactional data into marketing and business decisions. SQL Server, Python and Power BI for a 400+ store network — from raw data to the dashboard leadership actually uses.</span>
+      <span class="lang-pt">Transformo dados brutos em decisões de marketing e negócio. De vendas e mercado financeiro a dados — hoje aplico SQL Server, Python e Power BI numa rede nacional de fast-food, do dado bruto ao dashboard que a diretoria realmente usa.</span>
+      <span class="lang-en" hidden>I turn raw data into marketing and business decisions. From sales and finance to data — today I apply SQL Server, Python and Power BI at a national fast-food chain, from raw data to the dashboard leadership actually uses.</span>
     </p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#projetos">
@@ -372,43 +382,53 @@
     <div class="kpi-grid">
       <div class="kpi-tile">
         <div>
-          <div class="kpi-num">400+</div>
+          <div class="kpi-num">2019–26</div>
           <div class="kpi-label">
-            <span class="lang-pt">lojas na rede analisada</span>
-            <span class="lang-en" hidden>stores in the network analyzed</span>
+            <span class="lang-pt">de vendas e renda fixa a dados e automação</span>
+            <span class="lang-en" hidden>from sales &amp; fixed income to data &amp; automation</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 21 L14 17 L28 19 L42 11 L56 14 L70 7 L84 10 L100 4"/></svg>
+      </div>
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">5</div>
+          <div class="kpi-label">
+            <span class="lang-pt">setores: varejo, bancário, financeiro, vendas e aviação civil</span>
+            <span class="lang-en" hidden>industries: retail, banking, finance, sales &amp; civil aviation</span>
           </div>
         </div>
         <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 20 L15 16 L30 18 L45 8 L60 12 L75 4 L100 6"/></svg>
       </div>
       <div class="kpi-tile">
         <div>
-          <div class="kpi-num">50+</div>
+          <div class="kpi-num">12</div>
           <div class="kpi-label">
-            <span class="lang-pt">profissionais treinados</span>
-            <span class="lang-en" hidden>professionals trained</span>
-          </div>
-        </div>
-        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 22 L20 18 L35 20 L50 10 L65 14 L85 6 L100 9"/></svg>
-      </div>
-      <div class="kpi-tile">
-        <div>
-          <div class="kpi-num">3</div>
-          <div class="kpi-label">
-            <span class="lang-pt">pipelines de automação em produção</span>
-            <span class="lang-en" hidden>automation pipelines in production</span>
+            <span class="lang-pt">entregáveis: dashboards, automações e sites construídos</span>
+            <span class="lang-en" hidden>deliverables: dashboards, automations &amp; sites built</span>
           </div>
         </div>
         <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 18 L18 19 L34 12 L50 15 L68 5 L84 8 L100 3"/></svg>
       </div>
       <div class="kpi-tile">
         <div>
-          <div class="kpi-num">2019–26</div>
+          <div class="kpi-num">52</div>
           <div class="kpi-label">
-            <span class="lang-pt">trajetória unindo dados, negócio e pessoas</span>
-            <span class="lang-en" hidden>track record bridging data, business &amp; people</span>
+            <span class="lang-pt">cursos e certificações — SQL Server, Power BI, Python, Excel, Git…</span>
+            <span class="lang-en" hidden>courses &amp; certifications — SQL Server, Power BI, Python, Excel, Git…</span>
           </div>
         </div>
-        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 21 L14 17 L28 19 L42 11 L56 14 L70 7 L84 10 L100 4"/></svg>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 22 L20 18 L35 20 L50 10 L65 14 L85 6 L100 9"/></svg>
+      </div>
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">4</div>
+          <div class="kpi-label">
+            <span class="lang-pt">idiomas: português nativo, inglês avançado, espanhol e francês intermediário</span>
+            <span class="lang-en" hidden>languages: native Portuguese, advanced English, intermediate Spanish &amp; French</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 19 L16 15 L32 17 L48 9 L64 13 L80 6 L100 8"/></svg>
       </div>
     </div>
   </section>
@@ -421,10 +441,10 @@
     </div>
     <div class="about-body">
       <div>
-        <p class="lang-pt">Sou analista de dados com experiência prática transformando dados transacionais em decisões de marketing e negócio para uma rede de 400+ lojas de um dos maiores grupos de fast-food do Brasil. Combino SQL Server, Python e Power BI para construir pipelines de automação, dashboards e modelos de segmentação de clientes (machine learning).</p>
-        <p class="lang-pt">Estou em transição desde funções comerciais e financeiras (vendas, mesa de renda fixa) para dados — o que me deu uma leitura de negócio e um relacionamento com stakeholders que levo para cada análise. Formação em Engenharia de Produção pela UnB, com interesse em automações,  BI e visualização de dados.</p>
-        <p class="lang-en" hidden>I'm a data analyst with hands-on experience turning transactional data into marketing and business decisions for one of Brazil's largest fast-food chains (400+ stores). I combine SQL Server, Python and Power BI to build automation pipelines, dashboards and customer segmentation models (machine learning).</p>
-        <p class="lang-en" hidden>I'm transitioning from commercial and financial roles (sales, fixed income) into data — which gave me a business-outcome mindset and stakeholder skills I bring into every analysis. Production Engineering background from the University of Brasília, with interest in automations, BI and data visualization.</p>
+        <p class="lang-pt">Sou analista de dados com experiência prática em decisões de marketing e negócio para uma das maiores redes de fast-food do Brasil. Uso SQL Server, Python e Power BI para construir pipelines de automação, dashboards e modelos de segmentação de clientes por machine learning (K-Means). Já entreguei um CRM sobre mais de 400 mil clientes e um dashboard de cashback que acompanha R$ 2,16 Mi em saldo acumulado.</p>
+        <p class="lang-pt">Cheguei aos dados depois de passar por vendas, mercado financeiro e aviação civil — uma trajetória por 5 setores diferentes. Isso me deu leitura de negócio e relacionamento com stakeholders, que levo para cada análise. Sou formado em Engenharia de Produção pela UnB e tenho interesse crescente em IA aplicada, como o assistente via RAG que estou prototipando no portal de franqueados.</p>
+        <p class="lang-en" hidden>I'm a data analyst with hands-on experience driving marketing and business decisions for one of Brazil's largest fast-food chains. I use SQL Server, Python and Power BI to build automation pipelines, dashboards and machine-learning customer segmentation models (K-Means). I've delivered a CRM covering over 400K customers and a cashback dashboard tracking R$2.16M in accumulated balance.</p>
+        <p class="lang-en" hidden>I came to data after roles in sales, finance and civil aviation — a five-industry track record. That gave me a business-outcome mindset and stakeholder skills I bring into every analysis. I hold a Production Engineering degree from the University of Brasília and have a growing interest in applied AI, like the RAG-based assistant I'm prototyping in the franchisee portal.</p>
       </div>
       <dl class="about-side">
         <dt><span class="lang-pt">Localização</span><span class="lang-en" hidden>Location</span></dt>
@@ -489,12 +509,14 @@
           <div class="tl-org">Marketing Analytics · Giraffas</div>
         </div>
         <ul class="tl-bullets">
-          <li class="lang-pt">Conectei dados de performance digital a KPIs de negócio (receita, ticket médio, conversão) para uma rede de 400+ lojas.</li>
-          <li class="lang-pt">Construí pipelines de automação de relatórios em Python e Power BI, substituindo processos manuais.</li>
-          <li class="lang-pt">Estou construindo um CRM com machine learning (k-means) para segmentação de clientes e previsão de comportamento de consumo.</li>
-          <li class="lang-en" hidden>Connected digital performance data to business KPIs — revenue, average ticket, conversion — across 400+ stores.</li>
-          <li class="lang-en" hidden>Built automated reporting pipelines in Python and Power BI, replacing manual processes.</li>
-          <li class="lang-en" hidden>Building a machine-learning-driven CRM (k-means) for customer segmentation and consumption behavior prediction.</li>
+          <li class="lang-pt">Construí um CRM interativo sobre mais de 400 mil clientes do programa de cashback (perfil demográfico, geografia, taxa de adesão), base exploratória para um modelo de segmentação por K-Means.</li>
+          <li class="lang-pt">Desenvolvi dashboard Power BI de cashback acompanhando R$ 2,16 Mi em saldo acumulado e o funil de adesão da rede (232 mil contatos → 17 mil cadastros → 6 mil resgates) para a diretoria de marketing.</li>
+          <li class="lang-pt">Construí pipelines de automação de relatórios em Python e Power BI, substituindo processos manuais, para uma rede de 400+ lojas.</li>
+          <li class="lang-pt">Prototipei um portal interno para franqueados (React + Python) com assistente de IA via RAG para consulta de dados de desempenho.</li>
+          <li class="lang-en" hidden>Built an interactive CRM dashboard over 400K+ cashback-program customers (demographic profile, geography, enrollment rate), the exploratory base for a K-Means segmentation model.</li>
+          <li class="lang-en" hidden>Developed a Power BI cashback dashboard tracking R$2.16M in accumulated balance and the network's enrollment funnel (232K contacts → 17K sign-ups → 6K redemptions) for marketing leadership.</li>
+          <li class="lang-en" hidden>Built automated reporting pipelines in Python and Power BI, replacing manual processes, across a 400+ store network.</li>
+          <li class="lang-en" hidden>Prototyped an internal franchisee portal (React + Python) with a RAG-based AI assistant for performance data queries.</li>
         </ul>
       </div>
 
@@ -574,40 +596,40 @@
       <!-- Project images: replace the .proj-visual placeholder div with an <img src="..."> when real screenshots are ready -->
       <div class="proj-card">
         <div class="proj-visual">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="18" r="1.6"/><circle cx="19" cy="7" r="1.6"/><path d="M7 16.5L10 13.5M14 10.5L17 8.5"/></svg>
-          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+          <img src="img/proj-crm-cashback.jpg" alt="Dashboard interativo do CRM de cashback do Giraffas" loading="lazy">
         </div>
         <div class="proj-body">
           <div class="proj-title"><span class="lang-pt">CRM de segmentação de clientes</span><span class="lang-en" hidden>Customer segmentation CRM</span></div>
-          <p class="proj-desc lang-pt">Segmentação de clientes por frequência de visita e preferência de pedido para direcionar campanhas — do dado transacional ao modelo preditivo.</p>
-          <p class="proj-desc lang-en" hidden>Customer segmentation by visit frequency and order preference to target campaigns — from transactional data to a predictive model.</p>
-          <div class="proj-tags"><span class="pill">Python</span><span class="pill">SQL Server</span><span class="pill">K-Means</span><span class="pill">Power BI</span></div>
+          <p class="proj-desc lang-pt">Painel interativo sobre 403 mil clientes do programa de cashback — perfil demográfico, distribuição geográfica (27 estados, filtro dinâmico) e taxa de adesão — como base exploratória para o modelo de segmentação (K-Means) por frequência de visita e preferência de pedido.</p>
+          <p class="proj-desc lang-en" hidden>Interactive panel over 403k cashback program customers — demographic profile, geographic distribution (27 states, dynamic filter) and enrollment rate — as the exploratory base for the K-Means segmentation model by visit frequency and order preference.</p>
+          <div class="proj-tags"><span class="pill">Python</span><span class="pill">SQL Server</span><span class="pill">K-Means</span><span class="pill">Chart.js</span></div>
+          <a class="proj-link" href="dashboards/crm-cashback.html" target="_blank" rel="noopener">
+            <span class="lang-pt">Ver dashboard ao vivo ↗</span><span class="lang-en" hidden>View live dashboard ↗</span>
+          </a>
         </div>
       </div>
 
       <div class="proj-card">
         <div class="proj-visual">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg>
-          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+          <img src="img/proj-cashback-powerbi.jpg" alt="Dashboard Power BI do programa de cashback do Giraffas" loading="lazy">
         </div>
         <div class="proj-body">
           <div class="proj-title"><span class="lang-pt">Dashboard de cashback</span><span class="lang-en" hidden>Cashback dashboard</span></div>
-          <p class="proj-desc lang-pt">Dashboard com filtros de região e período, centralizando adesão e comportamento de clientes para a diretoria de marketing.</p>
-          <p class="proj-desc lang-en" hidden>Dashboard with region and date filters, centralizing enrollment and customer behavior for marketing leadership.</p>
+          <p class="proj-desc lang-pt">Dashboard Power BI com filtro de período, UF e loja, acompanhando R$ 2,16 Mi em cashback acumulado, o funil de adesão (232 mil telefones informados → 17 mil cadastros → 6 mil resgates) e o ranking de utilização por loja para a diretoria de marketing.</p>
+          <p class="proj-desc lang-en" hidden>Power BI dashboard with date, state and store filters, tracking R$2.16M in accumulated cashback, the enrollment funnel (232k phone numbers → 17k sign-ups → 6k redemptions) and store-level usage ranking for marketing leadership.</p>
           <div class="proj-tags"><span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Power Query</span></div>
         </div>
       </div>
 
       <div class="proj-card">
         <div class="proj-visual">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11"/></svg>
-          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+          <img src="img/proj-portal-franqueados.jpg" alt="Portal interno de franqueados Giraffas, com menu de desempenho, ranking, notícias e assistente de IA" loading="lazy">
         </div>
         <div class="proj-body">
-          <div class="proj-title"><span class="lang-pt">App interno para franqueados</span><span class="lang-en" hidden>Internal franchisee app</span></div>
-          <p class="proj-desc lang-pt">Aplicativo em fase piloto centralizando KPIs por loja e ranking de performance regional para a rede de franqueados.</p>
-          <p class="proj-desc lang-en" hidden>Pilot-phase internal app centralizing store-level KPIs and a regional performance ranking for the franchisee network.</p>
-          <div class="proj-tags"><span class="pill">Power BI</span><span class="pill">Python</span><span class="pill lang-pt">Piloto</span><span class="pill lang-en" hidden>Pilot</span></div>
+          <div class="proj-title"><span class="lang-pt">Portal interno para franqueados</span><span class="lang-en" hidden>Internal franchisee portal</span></div>
+          <p class="proj-desc lang-pt">Plataforma web em fase de protótipo (React + Python) centralizando desempenho por loja, ranking regional, comunicados e comunidade entre franqueados, com assistente de IA (RAG) para consulta de dados — integração com SQL Server ainda em andamento, hoje rodando sobre dados mock.</p>
+          <p class="proj-desc lang-en" hidden>Prototype-stage web platform (React + Python) centralizing store-level performance, regional ranking, announcements and a franchisee community space, with an AI assistant (RAG) for data queries — SQL Server integration in progress, currently running on mock data.</p>
+          <div class="proj-tags"><span class="pill">React</span><span class="pill">Python</span><span class="pill">LLM</span><span class="pill">RAG</span><span class="pill lang-pt">Protótipo</span><span class="pill lang-en" hidden>Prototype</span></div>
         </div>
       </div>
 
@@ -620,15 +642,60 @@
       <span class="sec-num">05</span>
       <h2 class="sec-title"><span class="lang-pt">Cursos &amp; Certificações</span><span class="lang-en" hidden>Certifications &amp; Courses</span></h2>
     </div>
-    <ul class="cert-list">
-      <li><span class="cert-mark">→</span><span><span class="lang-pt">SQL Server</span><span class="lang-en" hidden>SQL Server</span> — Alura</span></li>
-      <li><span class="cert-mark">→</span><span>Power BI &amp; Power Query — Alura (ETL)</span></li>
-      <li><span class="cert-mark">→</span><span><span class="lang-pt">Python para Dados</span><span class="lang-en" hidden>Python for Data</span> — UnB</span></li>
-      <li><span class="cert-mark">→</span><span><span class="lang-pt">Python — Automação e Análise de Dados</span><span class="lang-en" hidden>Python — Automation &amp; Data Analysis</span> — Hashtag Programação</span></li>
-      <li><span class="cert-mark">→</span><span>Power BI — Hashtag Programação</span></li>
-      <li><span class="cert-mark">→</span><span>Excel — Hashtag Programação</span></li>
-      <li><span class="cert-mark">→</span><span>Git &amp; GitHub — Alura</span></li>
-    </ul>
+    <p style="margin:-6px 0 22px; color:var(--muted); font-size:13.5px;">
+      <span class="lang-pt">52 cursos e certificações concluídos (Alura, UnB, Hashtag Programação, Casa Thomas Jefferson, ANCORD), organizados por área:</span>
+      <span class="lang-en" hidden>52 completed courses and certifications (Alura, UnB, Hashtag Programação, Casa Thomas Jefferson, ANCORD), organized by area:</span>
+    </p>
+    <div class="skill-groups" style="grid-template-columns:repeat(2,1fr); row-gap:26px;">
+      <div>
+        <span class="skill-group-label">SQL Server <span style="opacity:.55;">· 7</span></span>
+        <div class="pill-row">
+          <span class="pill"><span class="lang-pt">Fundamentos</span><span class="lang-en" hidden>Fundamentals</span></span><span class="pill"><span class="lang-pt">Consultas avançadas</span><span class="lang-en" hidden>Advanced queries</span></span><span class="pill"><span class="lang-pt">Manipulação de dados</span><span class="lang-en" hidden>Data manipulation</span></span><span class="pill">T-SQL</span><span class="pill"><span class="lang-pt">Procedures &amp; funções</span><span class="lang-en" hidden>Procedures &amp; functions</span></span><span class="pill">Performance</span><span class="pill"><span class="lang-pt">Administração de banco</span><span class="lang-en" hidden>Database administration</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label">Power BI &amp; DAX <span style="opacity:.55;">· 10</span></span>
+        <div class="pill-row">
+          <span class="pill"><span class="lang-pt">Fundamentos — Hashtag</span><span class="lang-en" hidden>Fundamentals — Hashtag</span></span><span class="pill">Power Query (ETL)</span><span class="pill"><span class="lang-pt">Modelagem de dados</span><span class="lang-en" hidden>Data modeling</span></span><span class="pill"><span class="lang-pt">DAX aplicado ao negócio</span><span class="lang-en" hidden>Business-applied DAX</span></span><span class="pill"><span class="lang-pt">Cálculos com DAX</span><span class="lang-en" hidden>DAX calculations</span></span><span class="pill">RLS</span><span class="pill"><span class="lang-pt">Linguagem M</span><span class="lang-en" hidden>M language</span></span><span class="pill"><span class="lang-pt">Visualizações estratégicas</span><span class="lang-en" hidden>Strategic visualizations</span></span><span class="pill"><span class="lang-pt">Visuais customizados</span><span class="lang-en" hidden>Custom visuals</span></span><span class="pill"><span class="lang-pt">Primeiro dashboard</span><span class="lang-en" hidden>First dashboard</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label">Excel <span style="opacity:.55;">· 8</span></span>
+        <div class="pill-row">
+          <span class="pill"><span class="lang-pt">Formação completa — Alura</span><span class="lang-en" hidden>Full track — Alura</span></span><span class="pill"><span class="lang-pt">Fundamentos — Hashtag</span><span class="lang-en" hidden>Fundamentals — Hashtag</span></span><span class="pill"><span class="lang-pt">Tabelas dinâmicas</span><span class="lang-en" hidden>Pivot tables</span></span><span class="pill"><span class="lang-pt">Criando tabelas</span><span class="lang-en" hidden>Building tables</span></span><span class="pill"><span class="lang-pt">Fórmulas matemáticas</span><span class="lang-en" hidden>Math formulas</span></span><span class="pill"><span class="lang-pt">Funções condicionais</span><span class="lang-en" hidden>Conditional functions</span></span><span class="pill"><span class="lang-pt">Validação de dados</span><span class="lang-en" hidden>Data validation</span></span><span class="pill"><span class="lang-pt">Gráficos</span><span class="lang-en" hidden>Charts</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Python &amp; Automação de Dados</span><span class="lang-en" hidden>Python &amp; Data Automation</span> <span style="opacity:.55;">· 3</span></span>
+        <div class="pill-row">
+          <span class="pill"><span class="lang-pt">Python para Dados — UnB</span><span class="lang-en" hidden>Python for Data — UnB</span></span><span class="pill"><span class="lang-pt">Automação e Análise — Hashtag</span><span class="lang-en" hidden>Automation &amp; Analysis — Hashtag</span></span><span class="pill">Python + Power BI</span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Ferramentas de Dev, Web &amp; Infra</span><span class="lang-en" hidden>Dev Tools, Web &amp; Infra</span> <span style="opacity:.55;">· 12</span></span>
+        <div class="pill-row">
+          <span class="pill">Git &amp; GitHub</span><span class="pill">VS Code</span><span class="pill">Terminal / CMD</span><span class="pill">WordPress</span><span class="pill">NGINX</span><span class="pill">Swagger</span><span class="pill"><span class="lang-pt">Padrões de API</span><span class="lang-en" hidden>API standards</span></span><span class="pill"><span class="lang-pt">Expressões regulares</span><span class="lang-en" hidden>Regex</span></span><span class="pill"><span class="lang-pt">Redes</span><span class="lang-en" hidden>Networking</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">IA &amp; Segurança</span><span class="lang-en" hidden>AI &amp; Security</span> <span style="opacity:.55;">· 3</span></span>
+        <div class="pill-row">
+          <span class="pill">GitHub Copilot</span><span class="pill">ChatGPT</span><span class="pill">Pentest</span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Corporativo, Ética &amp; Compliance</span><span class="lang-en" hidden>Corporate, Ethics &amp; Compliance</span> <span style="opacity:.55;">· 7</span></span>
+        <div class="pill-row">
+          <span class="pill">LGPD</span><span class="pill">Compliance</span><span class="pill"><span class="lang-pt">Responsabilidade corporativa</span><span class="lang-en" hidden>Corporate responsibility</span></span><span class="pill"><span class="lang-pt">Mediação de conflitos</span><span class="lang-en" hidden>Conflict mediation</span></span><span class="pill"><span class="lang-pt">Integridade corporativa</span><span class="lang-en" hidden>Corporate integrity</span></span><span class="pill"><span class="lang-pt">Gestão de contratos</span><span class="lang-en" hidden>Contract management</span></span><span class="pill"><span class="lang-pt">Cultura de confiança</span><span class="lang-en" hidden>Trust culture</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Idiomas &amp; Mercado Financeiro</span><span class="lang-en" hidden>Languages &amp; Financial Market</span> <span style="opacity:.55;">· 2</span></span>
+        <div class="pill-row">
+          <span class="pill"><span class="lang-pt">Proficiência em Inglês — Casa Thomas Jefferson</span><span class="lang-en" hidden>English Proficiency — Casa Thomas Jefferson</span></span><span class="pill"><span class="lang-pt">Agente Autônomo de Investimento — ANCORD</span><span class="lang-en" hidden>Independent Investment Agent — ANCORD</span></span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
