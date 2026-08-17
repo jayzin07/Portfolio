@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jorge Vinícius Corrêa — Data Analyst &amp; BI</title>
+<meta name="description" content="Portfólio de Jorge Vinícius Corrêa — Analista de Dados &amp; BI. Python, SQL Server, Power BI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#EEF1EF;
+    --panel:#FFFFFF;
+    --ink:#16211D;
+    --muted:#5B6B63;
+    --line:#CBD4CE;
+    --signal:#1F6F5C;
+    --signal-soft:rgba(31,111,92,0.08);
+    --signal-soft2:rgba(31,111,92,0.14);
+    --amber:#C6862B;
+    --amber-soft:rgba(198,134,43,0.12);
+    --radius-tile:6px;
+    --radius-card:10px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  [hidden]{display:none !important;}
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--signal); color:#fff;}
+
+  :focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* -------- Header / toolbar -------- */
+  header.toolbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(238,241,239,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; gap:20px;
+  }
+  .mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display); font-weight:700; font-size:15px;
+    letter-spacing:0.01em;
+    text-decoration:none; white-space:nowrap;
+  }
+  .mark-dot{
+    width:26px; height:26px; flex:none;
+  }
+  nav.tabs{
+    display:flex; gap:2px; margin-left:8px; flex:1; min-width:0;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  nav.tabs a{flex:none;}
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs a{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.02em;
+    text-decoration:none; color:var(--muted);
+    padding:8px 12px; border-radius:5px; white-space:nowrap;
+    position:relative;
+    transition:color .15s ease;
+  }
+  nav.tabs a:hover{color:var(--ink); background:var(--signal-soft);}
+  nav.tabs a::after{
+    content:""; position:absolute; left:12px; right:12px; bottom:2px; height:2px;
+    background:var(--signal); transform:scaleX(0); transform-origin:left;
+    transition:transform .18s ease;
+  }
+  nav.tabs a:hover::after{transform:scaleX(1);}
+
+  .toolbar-right{margin-left:auto; display:flex; align-items:center; gap:10px; flex:none; flex-shrink:0;}
+  .mark{flex:none;}
+
+  .lang-toggle{
+    display:flex; border:1px solid var(--line); border-radius:5px; overflow:hidden;
+    font-family:var(--font-mono); font-size:12px; font-weight:500;
+  }
+  .lang-toggle button{
+    border:0; background:var(--panel); color:var(--muted);
+    padding:7px 11px; cursor:pointer; letter-spacing:0.03em;
+  }
+  .lang-toggle button.active{background:var(--signal); color:#fff;}
+  .lang-toggle button:not(.active):hover{background:var(--signal-soft);}
+
+  .btn{
+    font-family:var(--font-mono); font-size:12.5px; font-weight:500;
+    display:inline-flex; align-items:center; gap:7px;
+    padding:9px 14px; border-radius:5px; text-decoration:none;
+    letter-spacing:0.02em; border:1px solid transparent; cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--canvas);}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 4px 0 0 var(--signal);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{background:var(--panel);}
+
+  /* -------- Hero -------- */
+  .hero{padding:64px 0 40px;}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--muted);
+    letter-spacing:0.06em; text-transform:uppercase;
+    display:flex; align-items:center; gap:8px; margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:""; width:7px; height:7px; border-radius:50%; background:var(--amber);
+    box-shadow:0 0 0 3px var(--amber-soft);
+  }
+  h1.name{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(32px, 5.2vw, 52px); line-height:1.06; margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-family:var(--font-mono); font-size:clamp(14px,2vw,17px); color:var(--signal);
+    font-weight:500; margin:0 0 22px;
+  }
+  .pitch{
+    font-size:18px; max-width:640px; color:var(--ink); margin:0 0 30px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:48px;}
+
+  /* KPI strip — signature element */
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius-tile);
+    overflow:hidden;
+  }
+  .kpi-tile{
+    background:var(--panel); padding:20px 18px 16px; min-height:118px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .kpi-num{font-family:var(--font-display); font-weight:700; font-size:26px;}
+  .kpi-label{font-size:12.5px; color:var(--muted); margin-top:4px; line-height:1.3;}
+  .kpi-spark{width:100%; height:26px; margin-top:10px;}
+  .kpi-spark path{
+    fill:none; stroke:var(--signal); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:120; stroke-dashoffset:120;
+    animation:draw 1.1s ease forwards;
+  }
+  .kpi-tile:nth-child(2) .kpi-spark path{animation-delay:.12s; stroke:var(--amber);}
+  .kpi-tile:nth-child(3) .kpi-spark path{animation-delay:.24s;}
+  .kpi-tile:nth-child(4) .kpi-spark path{animation-delay:.36s; stroke:var(--amber);}
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .kpi-spark path{animation:none; stroke-dashoffset:0;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* -------- Section shell -------- */
+  section{padding:56px 0; border-top:1px solid var(--line);}
+  .sec-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:30px;
+  }
+  .sec-num{font-family:var(--font-mono); color:var(--amber); font-size:13px;}
+  h2.sec-title{
+    font-family:var(--font-display); font-weight:600; font-size:24px; margin:0;
+  }
+
+  /* -------- About -------- */
+  .about-body{display:grid; grid-template-columns:1.4fr 1fr; gap:44px; align-items:start;}
+  .about-body p{font-size:16px; max-width:56ch; margin:0 0 14px;}
+  .about-side{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-card);
+    padding:18px 20px; font-family:var(--font-mono); font-size:13px; color:var(--muted);
+  }
+  .about-side dt{color:var(--ink); font-weight:500; margin-top:12px;}
+  .about-side dt:first-child{margin-top:0;}
+  .about-side dd{margin:2px 0 0;}
+
+  /* -------- Skills -------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:22px 28px;}
+  .skill-group-label{
+    font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--muted); margin-bottom:10px; display:block;
+  }
+  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .pill{
+    font-family:var(--font-mono); font-size:12px; padding:5px 10px;
+    background:var(--panel); border:1px solid var(--line); border-radius:20px;
+  }
+
+  /* -------- Experience timeline -------- */
+  .timeline{display:flex; flex-direction:column;}
+  .tl-row{
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:22px 0; border-top:1px dashed var(--line);
+  }
+  .tl-row:first-child{border-top:none; padding-top:0;}
+  .tl-meta{}
+  .tl-date{font-family:var(--font-mono); font-size:12.5px; color:var(--amber); font-weight:500;}
+  .tl-role{font-family:var(--font-display); font-weight:600; font-size:16.5px; margin:4px 0 2px;}
+  .tl-org{font-size:13.5px; color:var(--muted);}
+  .tl-bullets{margin:0; padding-left:18px;}
+  .tl-bullets li{margin-bottom:6px; font-size:14.5px;}
+  @media (max-width:640px){
+    .tl-row{grid-template-columns:1fr;}
+  }
+
+  /* -------- Projects -------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .proj-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-card);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .proj-card:hover{transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(22,33,29,0.35);}
+  .proj-visual{
+    aspect-ratio:16/10; background:
+      repeating-linear-gradient(0deg, transparent, transparent 15px, var(--line) 15px, var(--line) 16px),
+      repeating-linear-gradient(90deg, transparent, transparent 15px, var(--line) 15px, var(--line) 16px),
+      var(--signal-soft);
+    border-bottom:1px dashed var(--line);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px;
+    color:var(--muted); font-family:var(--font-mono); font-size:11.5px; text-align:center; padding:10px;
+  }
+  .proj-visual svg{width:34px; height:34px; opacity:.55;}
+  .proj-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .proj-title{font-family:var(--font-display); font-weight:600; font-size:15.5px;}
+  .proj-desc{font-size:13.5px; color:var(--ink); flex:1;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:auto;}
+  .proj-tags .pill{font-size:10.5px; padding:3px 8px;}
+  @media (max-width:800px){ .proj-grid{grid-template-columns:1fr;} }
+
+  /* -------- Certifications -------- */
+  .cert-list{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 30px; list-style:none; margin:0; padding:0;}
+  .cert-list li{
+    display:flex; gap:10px; font-size:14px; padding:10px 0; border-top:1px solid var(--line);
+  }
+  .cert-list li:first-child, .cert-list li:nth-child(2){border-top:none;}
+  .cert-mark{color:var(--signal); font-family:var(--font-mono); flex:none;}
+  @media (max-width:640px){
+    .cert-list{grid-template-columns:1fr;}
+    .cert-list li:nth-child(2){border-top:1px solid var(--line);}
+  }
+
+  /* -------- Contact -------- */
+  .contact-panel{
+    background:var(--ink); color:var(--canvas); border-radius:var(--radius-card);
+    padding:40px 36px; display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between; align-items:flex-end;
+  }
+  .contact-panel h2{
+    font-family:var(--font-display); font-size:26px; margin:0 0 8px; max-width:420px;
+  }
+  .contact-panel p{color:#B9C7C1; margin:0; font-size:14.5px; max-width:380px;}
+  .contact-links{display:flex; flex-direction:column; gap:9px; font-family:var(--font-mono); font-size:13.5px;}
+  .contact-links a{text-decoration:none; color:var(--canvas); display:flex; align-items:center; gap:8px;}
+  .contact-links a:hover{color:var(--amber);}
+  .contact-ctas{display:flex; gap:10px; flex-wrap:wrap;}
+  .contact-panel .btn-primary{background:var(--amber); color:var(--ink);}
+  .contact-panel .btn-primary:hover{box-shadow:0 4px 0 0 var(--canvas);}
+  .contact-panel .btn-ghost{border-color:#3a463f; color:var(--canvas);}
+  .contact-panel .btn-ghost:hover{background:#22302a;}
+
+  footer{
+    padding:26px 0 40px; text-align:center; font-family:var(--font-mono);
+    font-size:11.5px; color:var(--muted);
+  }
+
+  @media (max-width:900px){
+    .about-body{grid-template-columns:1fr;}
+    .skill-groups{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:640px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .skill-groups{grid-template-columns:1fr;}
+    .toolbar-right .btn-primary span.btn-label{display:none;}
+    nav.tabs a{padding:8px 9px;}
+    .contact-panel{padding:28px 20px;}
+  }
+  @media (max-width:700px){
+    .toolbar-inner{flex-wrap:wrap; row-gap:6px; padding-bottom:10px;}
+    nav.tabs{order:3; flex:0 0 100%; margin-left:0; margin-top:2px;
+      -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+      mask-image:linear-gradient(90deg,#000 92%,transparent);}
+  }
+</style>
+</head>
+<body class="lang-pt-mode">
+
+<header class="toolbar">
+  <div class="toolbar-inner">
+    <a href="#top" class="mark">
+      <svg class="mark-dot" viewBox="0 0 26 26" fill="none">
+        <rect x="0.5" y="0.5" width="25" height="25" rx="4" stroke="#16211D" stroke-opacity="0.15"/>
+        <circle cx="6" cy="18" r="2.2" fill="#1F6F5C"/>
+        <circle cx="13" cy="10" r="2.2" fill="#C6862B"/>
+        <circle cx="20" cy="14" r="2.2" fill="#1F6F5C"/>
+        <path d="M6 18L13 10L20 14" stroke="#16211D" stroke-width="1.1" stroke-opacity="0.35"/>
+      </svg>
+      JVC
+    </a>
+    <nav class="tabs">
+      <a href="#sobre">
+        <span class="lang-pt">Sobre</span><span class="lang-en" hidden>About</span>
+      </a>
+      <a href="#skills">
+        <span class="lang-pt">Skills</span><span class="lang-en" hidden>Skills</span>
+      </a>
+      <a href="#experiencia">
+        <span class="lang-pt">Experiência</span><span class="lang-en" hidden>Experience</span>
+      </a>
+      <a href="#projetos">
+        <span class="lang-pt">Projetos</span><span class="lang-en" hidden>Projects</span>
+      </a>
+      <a href="#contato">
+        <span class="lang-pt">Contato</span><span class="lang-en" hidden>Contact</span>
+      </a>
+    </nav>
+    <div class="toolbar-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="btn-pt" class="active" onclick="setLang('pt')">PT</button>
+        <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="border-top:none; padding-top:64px;">
+    <p class="eyebrow">
+      <span class="lang-pt">Perfil profissional · Brasília, DF (presencial e remoto)</span>
+      <span class="lang-en" hidden>Professional profile · Brasília, Brazil (in-person and remote)</span>
+    </p>
+    <h1 class="name">Jorge Vinícius Corrêa</h1>
+    <p class="role-line">
+      <span class="lang-pt">Analista de Dados &amp; BI — Marketing Analytics</span>
+      <span class="lang-en" hidden>Data Analyst &amp; BI — Marketing Analytics</span>
+    </p>
+    <p class="pitch">
+      <span class="lang-pt">Transformo dados transacionais em decisões de marketing e negócio. SQL Server, Python e Power BI para uma rede de 400+ lojas — do dado bruto ao dashboard que a diretoria realmente usa.</span>
+      <span class="lang-en" hidden>I turn transactional data into marketing and business decisions. SQL Server, Python and Power BI for a 400+ store network — from raw data to the dashboard leadership actually uses.</span>
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#projetos">
+        <span class="lang-pt">Ver projetos</span><span class="lang-en" hidden>See projects</span>
+      </a>
+      <a class="btn btn-ghost" href="#contato">
+        <span class="lang-pt">Falar comigo</span><span class="lang-en" hidden>Get in touch</span>
+      </a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/jorge-vinicius-correa" target="_blank" rel="noopener">
+        LinkedIn ↗
+      </a>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">400+</div>
+          <div class="kpi-label">
+            <span class="lang-pt">lojas na rede analisada</span>
+            <span class="lang-en" hidden>stores in the network analyzed</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 20 L15 16 L30 18 L45 8 L60 12 L75 4 L100 6"/></svg>
+      </div>
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">50+</div>
+          <div class="kpi-label">
+            <span class="lang-pt">profissionais treinados</span>
+            <span class="lang-en" hidden>professionals trained</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 22 L20 18 L35 20 L50 10 L65 14 L85 6 L100 9"/></svg>
+      </div>
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">3</div>
+          <div class="kpi-label">
+            <span class="lang-pt">pipelines de automação em produção</span>
+            <span class="lang-en" hidden>automation pipelines in production</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 18 L18 19 L34 12 L50 15 L68 5 L84 8 L100 3"/></svg>
+      </div>
+      <div class="kpi-tile">
+        <div>
+          <div class="kpi-num">2019–26</div>
+          <div class="kpi-label">
+            <span class="lang-pt">trajetória unindo dados, negócio e pessoas</span>
+            <span class="lang-en" hidden>track record bridging data, business &amp; people</span>
+          </div>
+        </div>
+        <svg class="kpi-spark" viewBox="0 0 100 26" preserveAspectRatio="none"><path d="M0 21 L14 17 L28 19 L42 11 L56 14 L70 7 L84 10 L100 4"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="sobre">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title"><span class="lang-pt">Sobre</span><span class="lang-en" hidden>About</span></h2>
+    </div>
+    <div class="about-body">
+      <div>
+        <p class="lang-pt">Sou analista de dados com experiência prática transformando dados transacionais em decisões de marketing e negócio para uma rede de 400+ lojas de um dos maiores grupos de fast-food do Brasil. Combino SQL Server, Python e Power BI para construir pipelines de automação, dashboards e modelos de segmentação de clientes (machine learning).</p>
+        <p class="lang-pt">Estou em transição desde funções comerciais e financeiras (vendas, mesa de renda fixa) para dados — o que me deu uma leitura de negócio e um relacionamento com stakeholders que levo para cada análise. Formação em Engenharia de Produção pela UnB, com interesse em automações,  BI e visualização de dados.</p>
+        <p class="lang-en" hidden>I'm a data analyst with hands-on experience turning transactional data into marketing and business decisions for one of Brazil's largest fast-food chains (400+ stores). I combine SQL Server, Python and Power BI to build automation pipelines, dashboards and customer segmentation models (machine learning).</p>
+        <p class="lang-en" hidden>I'm transitioning from commercial and financial roles (sales, fixed income) into data — which gave me a business-outcome mindset and stakeholder skills I bring into every analysis. Production Engineering background from the University of Brasília, with interest in automations, BI and data visualization.</p>
+      </div>
+      <dl class="about-side">
+        <dt><span class="lang-pt">Localização</span><span class="lang-en" hidden>Location</span></dt>
+        <dd>Brasília, DF, Brasil</dd>
+        <dt><span class="lang-pt">Disponibilidade</span><span class="lang-en" hidden>Availability</span></dt>
+        <dd><span class="lang-pt">Presencial (DF) e remoto</span><span class="lang-en" hidden>In-person (DF) and remote</span></dd>
+        <dt><span class="lang-pt">Formação</span><span class="lang-en" hidden>Education</span></dt>
+        <dd><span class="lang-pt">Eng. de Produção — UnB (2026)</span><span class="lang-en" hidden>Production Engineering — UnB (2026)</span></dd>
+        <dt><span class="lang-pt">Idiomas</span><span class="lang-en" hidden>Languages</span></dt>
+        <dd><span class="lang-pt">Português (nativo) · Inglês (avançado) · Espanhol (intermediário) · Francês (intermediário)</span><span class="lang-en" hidden>Portuguese (native) · English (advanced) · Spanish (intermediate) · French (intermediate)</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Linguagens &amp; Dados</span><span class="lang-en" hidden>Languages &amp; Data</span></span>
+        <div class="pill-row">
+          <span class="pill">SQL Server</span><span class="pill">Python</span><span class="pill">ETL</span><span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">React</span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">BI &amp; Visualização</span><span class="lang-en" hidden>BI &amp; Visualization</span></span>
+        <div class="pill-row">
+          <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Power Query</span><span class="pill">Excel avançado</span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label">Machine Learning</span>
+        <div class="pill-row">
+          <span class="pill">Random Forest</span><span class="pill"><span class="lang-pt">Redes Neurais</span><span class="lang-en" hidden>Neural Networks</span></span><span class="pill">K-Means Clustering</span><span class="pill">LLM</span><span class="pill">RAG</span>
+        </div>
+      </div>
+      <div>
+        <span class="skill-group-label"><span class="lang-pt">Automação</span><span class="lang-en" hidden>Automation</span></span>
+        <div class="pill-row">
+          <span class="pill">Web Scraping</span><span class="pill"><span class="lang-pt">Automação de Processos</span><span class="lang-en" hidden>Process Automation</span></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experiencia">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title"><span class="lang-pt">Experiência</span><span class="lang-en" hidden>Experience</span></h2>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date"><span class="lang-pt">2026 — presente</span><span class="lang-en" hidden>2026 — present</span></div>
+          <div class="tl-role"><span class="lang-pt">Analista de Dados</span><span class="lang-en" hidden>Data Analyst</span></div>
+          <div class="tl-org">Marketing Analytics · Giraffas</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Conectei dados de performance digital a KPIs de negócio (receita, ticket médio, conversão) para uma rede de 400+ lojas.</li>
+          <li class="lang-pt">Construí pipelines de automação de relatórios em Python e Power BI, substituindo processos manuais.</li>
+          <li class="lang-pt">Estou construindo um CRM com machine learning (k-means) para segmentação de clientes e previsão de comportamento de consumo.</li>
+          <li class="lang-en" hidden>Connected digital performance data to business KPIs — revenue, average ticket, conversion — across 400+ stores.</li>
+          <li class="lang-en" hidden>Built automated reporting pipelines in Python and Power BI, replacing manual processes.</li>
+          <li class="lang-en" hidden>Building a machine-learning-driven CRM (k-means) for customer segmentation and consumption behavior prediction.</li>
+        </ul>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date">2025 — 2026</div>
+          <div class="tl-role"><span class="lang-pt">Estagiário de TI</span><span class="lang-en" hidden>IT Intern</span></div>
+          <div class="tl-org">Banco do Brasil</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Automatizei processos operacionais com Python e web scraping.</li>
+          <li class="lang-pt">Desenvolvi planilhas e dashboards de acompanhamento gerencial.</li>
+          <li class="lang-en" hidden>Automated operational processes using Python and web scraping.</li>
+          <li class="lang-en" hidden>Built spreadsheets and dashboards supporting internal decision-making.</li>
+        </ul>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date">2023 — 2025</div>
+          <div class="tl-role"><span class="lang-pt">Consultor de Vendas</span><span class="lang-en" hidden>Sales Consultant</span></div>
+          <div class="tl-org">Inception · JogaBR &amp; CFGA</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Prospecção, conversão e relacionamento com clientes por abordagem consultiva.</li>
+          <li class="lang-en" hidden>Prospecting, conversion and client relationships through a consultative sales approach.</li>
+        </ul>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date">2021 — 2023</div>
+          <div class="tl-role"><span class="lang-pt">Mesa de Renda Fixa</span><span class="lang-en" hidden>Fixed Income Desk</span> (Middle Office)</div>
+          <div class="tl-org">VLG Investimentos</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Liderei a equipe operacional e treinei mais de 50 assessores em novos processos automatizados.</li>
+          <li class="lang-en" hidden>Led the operations team and trained 50+ financial advisors on new automated processes.</li>
+        </ul>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date">2020 — 2021</div>
+          <div class="tl-role"><span class="lang-pt">Estagiário de TI</span><span class="lang-en" hidden>IT Intern</span></div>
+          <div class="tl-org">ANAC</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Dashboards interativos em Power BI e formulário técnico adotado por grandes aeroportos.</li>
+          <li class="lang-en" hidden>Interactive Power BI dashboards and a technical form later adopted by major airports.</li>
+        </ul>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-meta">
+          <div class="tl-date">2019 — 2020</div>
+          <div class="tl-role"><span class="lang-pt">Líder de Controle e Automação</span><span class="lang-en" hidden>Control &amp; Automation Lead</span></div>
+          <div class="tl-org">Draco Volans</div>
+        </div>
+        <ul class="tl-bullets">
+          <li class="lang-pt">Liderança técnica em projeto de engenharia universitário.</li>
+          <li class="lang-en" hidden>Technical leadership on a university engineering project.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projetos">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title"><span class="lang-pt">Projetos</span><span class="lang-en" hidden>Projects</span></h2>
+    </div>
+    <div class="proj-grid">
+
+      <!-- Project images: replace the .proj-visual placeholder div with an <img src="..."> when real screenshots are ready -->
+      <div class="proj-card">
+        <div class="proj-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="18" r="1.6"/><circle cx="19" cy="7" r="1.6"/><path d="M7 16.5L10 13.5M14 10.5L17 8.5"/></svg>
+          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title"><span class="lang-pt">CRM de segmentação de clientes</span><span class="lang-en" hidden>Customer segmentation CRM</span></div>
+          <p class="proj-desc lang-pt">Segmentação de clientes por frequência de visita e preferência de pedido para direcionar campanhas — do dado transacional ao modelo preditivo.</p>
+          <p class="proj-desc lang-en" hidden>Customer segmentation by visit frequency and order preference to target campaigns — from transactional data to a predictive model.</p>
+          <div class="proj-tags"><span class="pill">Python</span><span class="pill">SQL Server</span><span class="pill">K-Means</span><span class="pill">Power BI</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg>
+          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title"><span class="lang-pt">Dashboard de cashback</span><span class="lang-en" hidden>Cashback dashboard</span></div>
+          <p class="proj-desc lang-pt">Dashboard com filtros de região e período, centralizando adesão e comportamento de clientes para a diretoria de marketing.</p>
+          <p class="proj-desc lang-en" hidden>Dashboard with region and date filters, centralizing enrollment and customer behavior for marketing leadership.</p>
+          <div class="proj-tags"><span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Power Query</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11"/></svg>
+          <span class="lang-pt">screenshot em breve</span><span class="lang-en" hidden>screenshot coming soon</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title"><span class="lang-pt">App interno para franqueados</span><span class="lang-en" hidden>Internal franchisee app</span></div>
+          <p class="proj-desc lang-pt">Aplicativo em fase piloto centralizando KPIs por loja e ranking de performance regional para a rede de franqueados.</p>
+          <p class="proj-desc lang-en" hidden>Pilot-phase internal app centralizing store-level KPIs and a regional performance ranking for the franchisee network.</p>
+          <div class="proj-tags"><span class="pill">Power BI</span><span class="pill">Python</span><span class="pill lang-pt">Piloto</span><span class="pill lang-en" hidden>Pilot</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section id="certificacoes">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title"><span class="lang-pt">Cursos &amp; Certificações</span><span class="lang-en" hidden>Certifications &amp; Courses</span></h2>
+    </div>
+    <ul class="cert-list">
+      <li><span class="cert-mark">→</span><span><span class="lang-pt">SQL Server</span><span class="lang-en" hidden>SQL Server</span> — Alura</span></li>
+      <li><span class="cert-mark">→</span><span>Power BI &amp; Power Query — Alura (ETL)</span></li>
+      <li><span class="cert-mark">→</span><span><span class="lang-pt">Python para Dados</span><span class="lang-en" hidden>Python for Data</span> — UnB</span></li>
+      <li><span class="cert-mark">→</span><span><span class="lang-pt">Python — Automação e Análise de Dados</span><span class="lang-en" hidden>Python — Automation &amp; Data Analysis</span> — Hashtag Programação</span></li>
+      <li><span class="cert-mark">→</span><span>Power BI — Hashtag Programação</span></li>
+      <li><span class="cert-mark">→</span><span>Excel — Hashtag Programação</span></li>
+      <li><span class="cert-mark">→</span><span>Git &amp; GitHub — Alura</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contato">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title"><span class="lang-pt">Contato</span><span class="lang-en" hidden>Contact</span></h2>
+    </div>
+    <div class="contact-panel">
+      <div>
+        <h2>
+          <span class="lang-pt">Vamos conversar?</span>
+          <span class="lang-en" hidden>Let's talk.</span>
+        </h2>
+        <p>
+          <span class="lang-pt">Aberto a oportunidades presenciais em Brasília/DF e remotas de Data Analyst, BI Analyst, Data Scientist e Marketing Analytics.</span>
+          <span class="lang-en" hidden>Open to in-person opportunities in Brasília/DF and remote Data Analyst, BI Analyst, Data Scientist and Marketing Analytics roles.</span>
+        </p>
+        <div class="contact-ctas" style="margin-top:20px;">
+          <a class="btn btn-primary" href="mailto:jorgevcorreab@gmail.com">
+            <span class="lang-pt">Enviar e-mail</span><span class="lang-en" hidden>Send email</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:jorgevcorreab@gmail.com">↳ jorgevcorreab@gmail.com</a>
+        <a href="tel:+5561981168423">↳ +55 61 98116-4823</a>
+        <a href="https://www.linkedin.com/in/jorge-vinicius-correa" target="_blank" rel="noopener">↳ linkedin.com/in/jorge-vinicius-correa</a>
+        <span>↳ Brasília, DF — Brasil</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="lang-pt">Jorge Vinícius Corrêa · Portfólio · Atualizado em 2026</span>
+  <span class="lang-en" hidden>Jorge Vinícius Corrêa · Portfolio · Updated 2026</span>
+</footer>
+
+<script>
+  function setLang(lang){
+    var isEn = lang === 'en';
+    document.querySelectorAll('.lang-pt').forEach(function(el){ el.hidden = isEn; });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = !isEn; });
+    document.getElementById('btn-pt').classList.toggle('active', !isEn);
+    document.getElementById('btn-en').classList.toggle('active', isEn);
+    document.documentElement.lang = isEn ? 'en' : 'pt-BR';
+    document.body.classList.toggle('lang-pt-mode', !isEn);
+    document.body.classList.toggle('lang-en-mode', isEn);
+    var cvLink = document.getElementById('cv-link');
+    if (cvLink) cvLink.setAttribute('href', isEn ? 'resume-en.pdf' : 'curriculo-pt.pdf');
+  }
+</script>
+
+</body>
+</html>
