@@ -596,14 +596,14 @@
       <!-- Project images: replace the .proj-visual placeholder div with an <img src="..."> when real screenshots are ready -->
       <div class="proj-card">
         <div class="proj-visual">
-          <img src="img/proj-crm-cashback.jpg" alt="Dashboard interativo do CRM de cashback do Giraffas" loading="lazy">
+          <img src="proj-crm-cashback.jpg" alt="Dashboard interativo do CRM de cashback do Giraffas" loading="lazy">
         </div>
         <div class="proj-body">
           <div class="proj-title"><span class="lang-pt">CRM de segmentação de clientes</span><span class="lang-en" hidden>Customer segmentation CRM</span></div>
           <p class="proj-desc lang-pt">Painel interativo sobre 403 mil clientes do programa de cashback — perfil demográfico, distribuição geográfica (27 estados, filtro dinâmico) e taxa de adesão — como base exploratória para o modelo de segmentação (K-Means) por frequência de visita e preferência de pedido.</p>
           <p class="proj-desc lang-en" hidden>Interactive panel over 403k cashback program customers — demographic profile, geographic distribution (27 states, dynamic filter) and enrollment rate — as the exploratory base for the K-Means segmentation model by visit frequency and order preference.</p>
           <div class="proj-tags"><span class="pill">Python</span><span class="pill">SQL Server</span><span class="pill">K-Means</span><span class="pill">Chart.js</span></div>
-          <a class="proj-link" href="dashboards/crm-cashback.html" target="_blank" rel="noopener">
+          <a class="proj-link" href="crm-cashback.html" target="_blank" rel="noopener">
             <span class="lang-pt">Ver dashboard ao vivo ↗</span><span class="lang-en" hidden>View live dashboard ↗</span>
           </a>
         </div>
@@ -611,7 +611,7 @@
 
       <div class="proj-card">
         <div class="proj-visual">
-          <img src="img/proj-cashback-powerbi.jpg" alt="Dashboard Power BI do programa de cashback do Giraffas" loading="lazy">
+          <img src="proj-cashback-powerbi.jpg" alt="Dashboard Power BI do programa de cashback do Giraffas" loading="lazy">
         </div>
         <div class="proj-body">
           <div class="proj-title"><span class="lang-pt">Dashboard de cashback</span><span class="lang-en" hidden>Cashback dashboard</span></div>
@@ -623,7 +623,7 @@
 
       <div class="proj-card">
         <div class="proj-visual">
-          <img src="img/proj-portal-franqueados.jpg" alt="Portal interno de franqueados Giraffas, com menu de desempenho, ranking, notícias e assistente de IA" loading="lazy">
+          <img src="proj-portal-franqueados.jpg" alt="Portal interno de franqueados Giraffas, com menu de desempenho, ranking, notícias e assistente de IA" loading="lazy">
         </div>
         <div class="proj-body">
           <div class="proj-title"><span class="lang-pt">Portal interno para franqueados</span><span class="lang-en" hidden>Internal franchisee portal</span></div>
@@ -746,8 +746,6 @@
     document.documentElement.lang = isEn ? 'en' : 'pt-BR';
     document.body.classList.toggle('lang-pt-mode', !isEn);
     document.body.classList.toggle('lang-en-mode', isEn);
-    var cvLink = document.getElementById('cv-link');
-    if (cvLink) cvLink.setAttribute('href', isEn ? 'resume-en.pdf' : 'curriculo-pt.pdf');
   }
 </script>
 
